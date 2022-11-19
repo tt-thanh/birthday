@@ -297,5 +297,21 @@ const animationTimeline = () => {
   });
 };
 
+const audio = document.getElementById("bgmMusic");
+let bt = document.getElementById("bt");
+console.log(audio);
+bt.addEventListener("click", ()=>{
+  audio.play();
+});
+const startPlaying = ()=>{
+  audio.removeEventListener('playing', startPlaying);
+  bt.classList.add("hide");
+  audio.play();
+}
+audio.addEventListener('playing', startPlaying);
+audio.addEventListener('error', ()=>{
+  console.log("error");
+});
+
 // Run fetch and animation in sequence
 fetchData();
